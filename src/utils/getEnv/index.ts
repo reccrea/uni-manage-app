@@ -1,3 +1,4 @@
+// 读取所有环境变量配置文件到process.env
 export function wrapperEnv(envConf: Recordable): ViteEnv {
 	const ret: any = {};
 
