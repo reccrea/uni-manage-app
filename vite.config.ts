@@ -14,6 +14,8 @@ import postcssPresetEnv from "postcss-preset-env";
 import postcssImport from "postcss-import";
 
 import viteCompression from "vite-plugin-compression";
+import vueSetupExtend from "vite-plugin-vue-setup-extend-plus";
+import eslintPlugin from "vite-plugin-eslint";
 
 import { wrapperEnv } from "./src/utils/getEnv";
 
@@ -94,13 +96,44 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 			Icons({
 				autoInstall: true
 			}),
-			viteCompression({
-				verbose: true,
-				disable: false,
-				threshold: 10240,
-				algorithm: "gzip",
-				ext: ".gz"
-			})
-		]
+			// EsLint 报错信息显示在浏览器界面上
+			eslintPlugin(),
+			// name 可以写在 script 标签上
+			vueSetupExtend(),
+			// gzip compress
+			viteEnv.VITE_BUILD_GZIP &&
+				viteCompression({
+					verbose: true,
+					disable: false,
+					threshold: 10240,
+					algorithm: "gzip",
+					ext: ".gz"
+				})
+		],
+		// 打包去除 console.log && debugger
+		esbuild: {
+			pure: viteEnv.VITE_DROP_CONSOLE ? ["console.log", "debugger"] : []
+		},
+		build: {
+			outDir: "dist",
+			minify: "esbuild",
+			// esbuild 打包更快，但是不能去除 console.log，terser打包慢，但能去除 console.log
+			// minify: "terser",
+			// terserOptions: {
+			// 	compress: {
+			// 		drop_console: viteEnv.VITE_DROP_CONSOLE,
+			// 		drop_debugger: true
+			// 	}
+			// },
+			chunkSizeWarningLimit: 1500,
+			rollupOptions: {
+				output: {
+					// Static resource classification and packaging
+					chunkFileNames: "assets/js/[name]-[hash].js",
+					entryFileNames: "assets/js/[name]-[hash].js",
+					assetFileNames: "assets/[ext]/[name]-[hash].[ext]"
+				}
+			}
+		}
 	};
 });
