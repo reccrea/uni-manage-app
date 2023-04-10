@@ -7,13 +7,14 @@ import "@/styles/index.less";
 import router from "@/routers/index";
 
 // 状态管理 store
-import pinia from "@/stores/index";
+import { setupStore } from "@/stores";
 
 import App from "./App.vue";
 
 const app = createApp(App);
 
 app.use(router);
-app.use(pinia);
+
+setupStore(app);
 
 app.mount("#app");

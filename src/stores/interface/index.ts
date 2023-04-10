@@ -1,4 +1,4 @@
-export interface GlobalState {
+export interface userInterface {
 	token: string;
 	userInfo: any;
 }

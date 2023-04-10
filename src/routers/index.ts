@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import { staticRouter } from "@/routers/modules/staticRouter";
 
-import { GlobalStore } from "@/stores";
+import { useUserStoreHook } from "@/stores/modules/user";
 
 import NProgress from "@/config/nprogress";
 
@@ -19,7 +19,7 @@ const router = createRouter({
 	路由拦截
 */
 router.beforeEach((to, from, next) => {
-	const globalStore = GlobalStore();
+	const useUserStore = useUserStoreHook();
 
 	// 1.NProgress 开始
 	NProgress.start();
@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
 
 	// 3.判断是访问登陆页，有 Token 就在当前页面，没有 Token 重置路由并放行到登陆页
 	if (to.path.toLocaleLowerCase() === "/login") {
-		if (globalStore.token) {
+		if (useUserStore.token) {
 			return next(from.fullPath);
 		}
 		// resetRouter();
@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
 	if (ROUTER_WHITE_LIST.includes(to.path)) return next();
 
 	// 5.判断是否有 Token，没有重定向到 login
-	if (!globalStore.token)
+	if (!useUserStore.token)
 		return next({
 			path: "/login",
 			replace: true
