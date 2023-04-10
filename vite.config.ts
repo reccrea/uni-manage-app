@@ -14,7 +14,7 @@ import postcssPresetEnv from "postcss-preset-env";
 import postcssImport from "postcss-import";
 
 import viteCompression from "vite-plugin-compression";
-import vueSetupExtend from "vite-plugin-vue-setup-extend-plus";
+import vueSetupExtend from "vite-plugin-vue-setup-extend";
 import eslintPlugin from "vite-plugin-eslint";
 
 import { wrapperEnv } from "./src/utils/getEnv";
