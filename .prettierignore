@@ -8,6 +8,8 @@ src/.DS_Store
 **/*.sh
 
 /public/*
-components.d.ts
 
 .history
+
+components.d.ts
+auto-imports.d.ts

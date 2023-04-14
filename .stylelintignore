@@ -21,3 +21,6 @@
 
 .husky
 .history
+
+components.d.ts
+auto-imports.d.ts
