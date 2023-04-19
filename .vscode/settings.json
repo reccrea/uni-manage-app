@@ -1,0 +1,54 @@
+{
+	"editor.formatOnSave": true,
+	"stylelint.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.stylelint": true
+	},
+	"stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass", "html"],
+	"files.eol": "\n",
+	// 以下使用prettier格式化文档
+	"[vue]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[less]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	// 自动保存
+	"files.autoSave": "afterDelay",
+	// 是否显示缩略图
+	"editor.minimap.enabled": false,
+	// 文件图标主题
+	"workbench.iconTheme": "vscode-great-icons",
+	// 鼠标滚轮时对编辑器字体大小进行缩放
+	"editor.mouseWheelZoom": true,
+	// 资源管理器是否应以紧凑形式呈现文件夹
+	"explorer.compactFolders": false,
+	// 字体
+	"editor.fontFamily": "JetBrains Mono Medium",
+	"editor.fontLigatures": true,
+	"editor.fontSize": 16
+}
